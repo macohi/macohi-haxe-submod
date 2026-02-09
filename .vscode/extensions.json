@@ -1,0 +1,10 @@
+{
+	"recommendations": [
+		// These ones don't really matter all that much, they're haxe ones
+		"openfl.lime-vscode-extension",
+		"redhat.vscode-xml",
+
+		// This one important tho
+		"gieson.writetimestamp"
+	]
+}

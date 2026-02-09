@@ -20,6 +20,15 @@ Update : `git submodule update --init --recursive`
 
 Just fukin download the zip and drop it in your haxeflixel project lol
 
+## Notes
+
+### Timestamps
+
+For the timestamps I use an extension : "Write Timestamp" (gieson.writetimestamp)
+I have C list set to custom and B custom format to "y-mm-dd"
+
+So yuh
+
 # Other shit
 
 ## I'm getting errors about missing classes!
