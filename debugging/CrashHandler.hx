@@ -18,7 +18,7 @@ using StringTools;
 	This is to fix the annoying crashes with no
 	response from haxeflixel unless in a debug build
 
-	_Last edit timestamp_: 2026-02-09
+	_Last edit date_: 2026-02-09
 	@since 2026-02-09
 **/
 class CrashHandler
