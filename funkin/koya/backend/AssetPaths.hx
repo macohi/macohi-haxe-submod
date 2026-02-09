@@ -7,6 +7,12 @@ import flixel.graphics.frames.FlxAtlasFrames;
 using haxe.io.Path;
 using StringTools;
 
+/**
+	Funkin' Koya AssetPaths
+
+	_Last edit date_: 2026-02-09
+	@since 2026-02-09
+**/
 class AssetPaths
 {
 	public static var soundExt:String = #if web 'mp3' #else 'ogg' #end;
