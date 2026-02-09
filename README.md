@@ -32,6 +32,17 @@ It broke the `@since` and removing the time from the `@since` manually was gonna
 
 So yuh
 
+## Libraries
+
+These are required
+
+```xml
+<haxelib name="flixel" />
+<haxelib name="flixel-addons" />
+<haxelib name="flixel-ui" />
+<haxelib name="flixel-animate" />
+```
+
 # Other shit
 
 ## General Project Recommendation
