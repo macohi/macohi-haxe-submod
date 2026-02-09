@@ -1,3 +1,5 @@
 --library flixel
+--library flixel-addons
+--library flixel-ui
 --library lime
 --library openfl

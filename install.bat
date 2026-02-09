@@ -2,5 +2,7 @@
 haxelib newrepo
 
 haxelib install flixel
+haxelib install flixel-addons
+haxelib install flixel-ui
 haxelib install openfl
 haxelib install lime
