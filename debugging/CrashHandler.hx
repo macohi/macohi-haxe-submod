@@ -12,6 +12,7 @@ import sys.FileSystem;
 import sys.io.File;
 
 using StringTools;
+using macohi.util.StringUtil;
 #end
 
 /**
@@ -30,16 +31,16 @@ class CrashHandler
 
 	public static function initalize(?new_file_location:String, ?new_file_prefix:String, ?new_github_user:String, ?new_github_repo:String)
 	{
-		if (new_file_prefix != null)
+		if (!new_file_prefix.isBlank())
 			FILE_PREFIX = new_file_prefix;
 
-		if (new_github_user != null)
+		if (!new_github_user.isBlank())
 			GITHUB_USER = new_github_user;
 
-		if (new_github_repo != null)
+		if (!new_github_repo.isBlank())
 			GITHUB_REPO = new_github_repo;
 
-		if (new_file_location != null)
+		if (!new_file_location.isBlank())
 			FILE_LOCATION = new_file_location;
 
 		REPORT_PAGE = new Template(REPORT_PAGE).execute({
