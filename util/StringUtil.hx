@@ -8,7 +8,9 @@ class StringUtil
 {
 	/**
 	 * Checks if a string is `null` or blank (contains only whitespaces).
+	 * 
 	 * Yoinked from an FNF pr heheheehehehee
+	 * https://github.com/FunkinCrew/Funkin/pull/6910
 	 *
 	 * @param value The string to check.
 	 * @return True... or False...
