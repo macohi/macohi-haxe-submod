@@ -5,6 +5,7 @@ import animate.FlxAnimateFrames;
 import flixel.graphics.frames.FlxAtlasFrames;
 
 using haxe.io.Path;
+using macohi.util.StringUtil;
 using StringTools;
 
 class AssetPaths
@@ -60,7 +61,7 @@ class AssetPaths
 
 	public static function getLibraryPath(path:String, ?library:String):String
 	{
-		if (library == null)
+		if (library.isBlank())
 			return getPath(path);
 
 		return getPath('$library/$path');
