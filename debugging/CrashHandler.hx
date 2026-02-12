@@ -10,10 +10,10 @@ import openfl.Lib;
 import openfl.events.UncaughtErrorEvent;
 import sys.FileSystem;
 import sys.io.File;
+#end
 
 using StringTools;
 using macohi.util.StringUtil;
-#end
 
 /**
 	This is to fix the annoying crashes with no
