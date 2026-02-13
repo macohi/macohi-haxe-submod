@@ -10,6 +10,16 @@ import animate.FlxAnimate;
 **/
 class MSprite extends FlxAnimate
 {
+	public var brightness(default, set):Float = 0.0;
+	
+	function set_brightness(newbright:Float):Float {
+		colorTransform.redMultiplier = 1.0 + newbright;
+		colorTransform.blueMultiplier = 1.0 + newbright;
+		colorTransform.greenMultiplier = 1.0 + newbright;
+
+		return newbright;
+	}
+
 	public function setPositionBasedOnDimensions(x:Float = 0, y:Float = 0, desiredW:Float = 1280, desiredH:Float = 720)
 	{
 		var newX = x * (FlxG.width / desiredW);
