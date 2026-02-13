@@ -70,11 +70,18 @@ class NGio
 		}
 	}
 
+	public dynamic function setSessionId()
+	{
+		FlxG.save.data.sessionId = NG.core.sessionId;
+	}
+
 	function onNGLogin():Void
 	{
 		trace('logged in! user:${NG.core.user.name}');
 		isLoggedIn = true;
-		FlxG.save.data.sessionId = NG.core.sessionId;
+
+		setSessionId();
+
 		// FlxG.save.flush();
 		// Load medals then call onNGMedalFetch()
 		NG.core.requestMedals(outcome ->
