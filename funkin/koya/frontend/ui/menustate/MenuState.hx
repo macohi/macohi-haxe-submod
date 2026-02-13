@@ -159,7 +159,7 @@ class MenuState extends MusicBeatState
 			accepted(itemsSpriteGroup.members[currentSelection].item);
 	}
 
-	public function controlsGeneral()
+	public function controlsAll()
 	{
 		if (menuType == Vertical)
 			controlsMoveVertical();
@@ -181,7 +181,7 @@ class MenuState extends MusicBeatState
 		super.update(elapsed);
 
 		if (subState == null)
-			controlsGeneral();
+			controlsAll();
 
 		if (menuType == Vertical)
 		{
