@@ -5,6 +5,8 @@ import flixel.FlxG;
 
 class Save
 {
+	public function new() {}
+
 	public var SAVE_VERSION:Null<Int> = 0;
 
 	public var version:SaveField<Null<Int>>;
