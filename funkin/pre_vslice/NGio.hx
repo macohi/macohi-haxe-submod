@@ -1,6 +1,6 @@
 package macohi.funkin.pre_vslice;
 
-#if (ENABLE_NEWGROUNDS)
+#if (ENABLE_NEWGROUNDS && newgrounds)
 import flixel.FlxG;
 import flixel.util.FlxSignal;
 import flixel.util.FlxTimer;
@@ -43,7 +43,8 @@ class NGio
 
 		NG.createAndCheckSession(api, sessionId);
 
-		NG.core.verbose = true;
+		// HIDE APP ID SHITS
+		NG.core.verbose = #if debug true #else false #end;
 		// Set the encryption cipher/format to RC4/Base64. AES128 and Hex are not implemented yet
 		NG.core.setupEncryption(encKey); // Found in you NG project view
 
@@ -115,7 +116,7 @@ class NGio
 			var board = NG.core.scoreBoards.get(id);
 			trace('loaded scoreboard id:$id, name:${board.name}');
 		}
-		var board = NG.core.scoreBoards.get(15064);// ID found in NG project view
+		// var board = NG.core.scoreBoards.get(15064); // ID found in NG project view
 
 		// Posting a score thats OVER 9000!
 		// board.postScore(FlxG.random.int(0, 1000));
@@ -124,28 +125,24 @@ class NGio
 		// --- To view the scores you first need to select the range of scores you want to see ---
 
 		// add an update listener so we know when we get the new scores
-		board.onUpdate.add(onNGScoresFetch);
-		trace("shoulda got score by NOW!");
-		board.requestScores();// get the best 10 scores ever logged
+		// board.onUpdate.add(onNGScoresFetch);
+		// trace("shoulda got score by NOW!");
+		// board.requestScores(); // get the best 10 scores ever logged
 		// more info on scores --- http://www.newgrounds.io/help/components/#scoreboard-getscores
 	}
 
 	inline static public function postScore(score:Int = 0, song:String)
 	{
 		if (isLoggedIn)
-		{
 			for (id in NG.core.scoreBoards.keys())
 			{
 				var board = NG.core.scoreBoards.get(id);
 
 				if (song == board.name)
-				{
 					board.postScore(score, NG.core.user.name);
-				}
 
 				trace('loaded scoreboard id:$id, name:${board.name}');
 			}
-		}
 	}
 
 	function onNGScoresFetch():Void
@@ -155,16 +152,16 @@ class NGio
 		scoreboardsLoaded = true;
 
 		ngScoresLoaded.dispatch();
-			for (score in NG.core.scoreBoards.get(8737).scores)
-			{
-				trace('score loaded user:${score.user.name}, score:${score.formattedValue}');
+		// for (score in NG.core.scoreBoards.get(8737).scores)
+		// {
+		// 	trace('score loaded user:${score.user.name}, score:${score.formattedValue}');
 
-			}
+		// }
 
 		// var board = NG.core.scoreBoards.get(15064);// ID found in NG project view
 		// board.postScore(HighScore.score);
 
-		NGio.scoreboardArray = NG.core.scoreBoards.get(15064).scores;
+		// NGio.scoreboardArray = NG.core.scoreBoards.get(15064).scores;
 	}
 
 	inline static public function logEvent(event:String)
