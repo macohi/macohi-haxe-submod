@@ -3,6 +3,8 @@ package macohi.save;
 import lime.app.Application;
 import flixel.FlxG;
 
+using macohi.funkin.vslice.util.AnsiUtil;
+
 class Save
 {
 	public function new() {}
@@ -34,7 +36,7 @@ class Save
 				if (toobig.contains(field))
 					continue;
 
-				trace('Save.${field} : ${Reflect.field(FlxG.save.data, field)}');
+				trace('${' SAVE '.bg_bright_blue} | Save.${field} : ${Reflect.field(FlxG.save.data, field)}');
 			}
 		});
 
