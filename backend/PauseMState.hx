@@ -8,6 +8,7 @@ import macohi.overrides.MState;
 class PauseMState extends MState
 {
 	public var paused:Bool = true;
+	public var canPause:Bool = true;
 	public var pauseBG:MSprite;
 
 	override function create()
@@ -25,7 +26,7 @@ class PauseMState extends MState
 	{
 		super.update(elapsed);
 
-		if (getPauseBoolean())
+		if (getPauseBoolean() && canPause)
 			togglePaused();
 	}
 
