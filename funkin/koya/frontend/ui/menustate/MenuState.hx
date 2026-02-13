@@ -288,7 +288,8 @@ class MenuState extends MusicBeatState
 			}
 
 		if (change != 0)
-			FlxG.sound.play(MegaVars.SOUND_MENU_SCROLL);
+			if (MegaVars.SOUND_MENU_SCROLL != null)
+				FlxG.sound.play(MegaVars.SOUND_MENU_SCROLL);
 	}
 
 	public function accepted(item:String)
@@ -300,7 +301,10 @@ class MenuState extends MusicBeatState
 
 		transitioning = true;
 
-		var confirmMenu = new FlxSound().loadEmbedded(MegaVars.SOUND_MENU_CONFIRM);
+		var confirmMenu = new FlxSound();
+		if (MegaVars.SOUND_MENU_CONFIRM != null)
+			confirmMenu.loadEmbedded(MegaVars.SOUND_MENU_CONFIRM);
+
 		confirmMenu.play();
 
 		acceptedFlicker(confirmMenu, item);
