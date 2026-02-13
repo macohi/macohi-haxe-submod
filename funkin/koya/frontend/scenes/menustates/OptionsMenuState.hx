@@ -57,7 +57,8 @@ class OptionsMenuState extends MenuState
 
 		valueText = new FlxText(valueBG.x, valueBG.y, valueBG.width, 'Lorem', 32);
 		add(valueText);
-		valueText.setFormat(AssetPaths.font(MegaVars.VCR_FONT, MegaVars.VCR_LIBRARY), 32, FlxColor.WHITE, FlxTextAlign.CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		valueText.setFormat(AssetPaths.font(MegaVars.VCR_FONT, MegaVars.VCR_LIBRARY), 32, FlxColor.WHITE, FlxTextAlign.CENTER, FlxTextBorderStyle.OUTLINE,
+			FlxColor.BLACK);
 		valueText.borderSize = 3;
 	}
 

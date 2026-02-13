@@ -10,7 +10,8 @@ class SaveField<T>
 		this.field = field;
 		this.display = display;
 
-		if (initalValue != null && get() == null) set(initalValue);
+		if (initalValue != null && get() == null)
+			set(initalValue);
 	}
 
 	public function get():T

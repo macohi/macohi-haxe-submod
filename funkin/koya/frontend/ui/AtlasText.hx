@@ -38,7 +38,8 @@ class AtlasText extends FlxTypedSpriteGroup<AtlasChar>
 
 	public function new(x = 0.0, y = 0.0, text:String = "", fontName:AtlasFont = AtlasFont.DEFAULT)
 	{
-		if (!fonts.exists(fontName)) fonts[fontName] = new AtlasFontData(fontName);
+		if (!fonts.exists(fontName))
+			fonts[fontName] = new AtlasFontData(fontName);
 		font = fonts[fontName] ?? new AtlasFontData(fontName);
 
 		super(x, y);
@@ -54,7 +55,8 @@ class AtlasText extends FlxTypedSpriteGroup<AtlasChar>
 		final caseText:String = restrictCase(this.text);
 
 		this.text = value;
-		if (caseText == caseValue) return value; // cancel redraw
+		if (caseText == caseValue)
+			return value; // cancel redraw
 
 		if (caseValue.indexOf(caseText) == 0)
 		{
@@ -67,7 +69,8 @@ class AtlasText extends FlxTypedSpriteGroup<AtlasChar>
 
 		group.kill();
 
-		if (value == "") return this.text;
+		if (value == "")
+			return this.text;
 
 		appendTextCased(caseValue);
 		return this.text;
@@ -80,8 +83,10 @@ class AtlasText extends FlxTypedSpriteGroup<AtlasChar>
 	 */
 	public function appendText(str:String):Void
 	{
-		if (str == null) throw "cannot append null";
-		if (str == "") return;
+		if (str == null)
+			throw "cannot append null";
+		if (str == "")
+			return;
 
 		this.text += str;
 	}
@@ -110,7 +115,8 @@ class AtlasText extends FlxTypedSpriteGroup<AtlasChar>
 		var xPos:Float = 0;
 		var yPos:Float = 0;
 		// `countLiving` returns -1 if group is empty
-		if (charCount == -1) charCount = 0;
+		if (charCount == -1)
+			charCount = 0;
 		else if (charCount > 0)
 		{
 			var lastChar:AtlasChar = group.members[charCount - 1];
@@ -129,7 +135,8 @@ class AtlasText extends FlxTypedSpriteGroup<AtlasChar>
 					yPos += maxHeight;
 				case char:
 					var charSprite:AtlasChar;
-					if (group.members.length <= charCount) charSprite = new AtlasChar(atlas, char);
+					if (group.members.length <= charCount)
+						charSprite = new AtlasChar(atlas, char);
 					else
 					{
 						charSprite = group.members[charCount];
@@ -195,10 +202,12 @@ class AtlasChar extends FlxSprite
 
 	function set_char(value:String):String
 	{
-		if (this.char == value) return this.char;
+		if (this.char == value)
+			return this.char;
 
 		animation.addByPrefix('anim', getAnimPrefix(value), 24);
-		if (animation.exists('anim')) animation.play('anim');
+		if (animation.exists('anim'))
+			animation.play('anim');
 
 		updateHitbox();
 
@@ -266,11 +275,14 @@ private class AtlasFontData
 		{
 			maxHeight = Math.max(maxHeight, frame.frame.height);
 
-			if (!containsUpper) containsUpper = upperChar.match(frame.name);
-			if (!containsLower) containsLower = lowerChar.match(frame.name);
+			if (!containsUpper)
+				containsUpper = upperChar.match(frame.name);
+			if (!containsLower)
+				containsLower = lowerChar.match(frame.name);
 		}
 
-		if (containsUpper != containsLower) caseAllowed = containsUpper ? Upper : Lower;
+		if (containsUpper != containsLower)
+			caseAllowed = containsUpper ? Upper : Lower;
 	}
 }
 

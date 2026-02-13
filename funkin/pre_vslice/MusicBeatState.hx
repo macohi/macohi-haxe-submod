@@ -4,7 +4,7 @@ import flixel.addons.ui.FlxUIState;
 
 /**
 	FNF 0.2.8 MusicBeatState
-	
+
 	`controls` removed
 **/
 class MusicBeatState extends FlxUIState
@@ -13,9 +13,8 @@ class MusicBeatState extends FlxUIState
 	private var curBeat:Int = 0;
 
 	// private var controls(get, never):Controls;
-
 	// inline function get_controls():Controls
-		// return PlayerSettings.player1.controls;
+	// return PlayerSettings.player1.controls;
 
 	override function create()
 	{

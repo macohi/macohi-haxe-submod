@@ -2,7 +2,7 @@ package macohi.util;
 
 /**
 	The navigation class.
-	
+
 	I'm serious.
 	This class was made to reduce boilerplate inside menus where it would be uneccessary
 	to have the same code over and over for everything. 
@@ -11,33 +11,42 @@ package macohi.util;
 **/
 @:publicFields
 @:noDebug
-abstract Navigation(Int) {
+abstract Navigation(Int)
+{
 	inline function new() {}
 
-	inline function scroll(amount:Int) {
+	inline function scroll(amount:Int)
+	{
 		this += amount;
 	}
 
-	inline function reset() {
+	inline function reset()
+	{
 		this = 0;
 	}
 
-	inline function resetIfOver(amount:Int) {
-		if (this >= amount) {
+	inline function resetIfOver(amount:Int)
+	{
+		if (this >= amount)
+		{
 			this = 0;
 		}
 	}
 
-	inline function resetIfUnder(amount:Int, setTo:Int) {
-		if (this < amount) {
+	inline function resetIfUnder(amount:Int, setTo:Int)
+	{
+		if (this < amount)
+		{
 			this = setTo;
 		}
 	}
 
-	inline function resetIfBoth(over:Int, under:Int, setTo:Int) {
+	inline function resetIfBoth(over:Int, under:Int, setTo:Int)
+	{
 		resetIfOver(over);
 		resetIfUnder(under, setTo);
 	}
 
-	inline function value() return this;
+	inline function value()
+		return this;
 }
