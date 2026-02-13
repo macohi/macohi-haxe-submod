@@ -30,7 +30,7 @@ class MedalPopup extends FlxBasic
 			startDelay: 1,
 		});
 
-		FlxG.sound.playMusic(AssetPaths.sound('medalpopup', 'medals'));
+		FlxG.sound.playMusic(AssetPaths.sound('medalpopup', 'medals'), 1.0, false, null);
 	}
 
 	override function draw()
