@@ -15,6 +15,7 @@ class Save
 
 	function initFields()
 	{
+		trace('${' SAVE '.bg_bright_blue} | Initalizing Save fields');
 		version = new SaveField<Null<Int>>('version', SAVE_VERSION);
 	}
 
@@ -22,6 +23,7 @@ class Save
 
 	public function init(project:String, ?company:String)
 	{
+		trace('${' SAVE '.bg_bright_blue} | Initalizing Save');
 		FlxG.save.bind(project, company ?? Application.current.meta.get('company'));
 
 		initFields();
@@ -57,6 +59,7 @@ class Save
 		}
 		else
 		{
+			trace('${' SAVE '.bg_bright_blue} | Upgraded Save to $SAVE_VERSION');
 			if (onComplete != null)
 				onComplete();
 		}
