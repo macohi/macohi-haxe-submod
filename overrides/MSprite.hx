@@ -13,9 +13,11 @@ class MSprite extends FlxAnimate
 	public var brightness(default, set):Float = 0.0;
 	
 	function set_brightness(newbright:Float):Float {
+		trace('setting colorTransform: (r: ${colorTransform.redMultiplier}, g: ${colorTransform.greenMultiplier}, b: ${colorTransform.blueMultiplier})');
+
 		colorTransform.redMultiplier = 1.0 + newbright;
-		colorTransform.blueMultiplier = 1.0 + newbright;
 		colorTransform.greenMultiplier = 1.0 + newbright;
+		colorTransform.blueMultiplier = 1.0 + newbright;
 
 		return newbright;
 	}
