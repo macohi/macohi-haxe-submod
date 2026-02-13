@@ -1,7 +1,6 @@
 package macohi.objects.interactable;
 
 import flixel.FlxG;
-import flixel.FlxBasic;
 import flixel.util.FlxSignal;
 import macohi.overrides.MSprite;
 

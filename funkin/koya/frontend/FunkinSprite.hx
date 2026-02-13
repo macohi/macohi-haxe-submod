@@ -1,12 +1,12 @@
 package macohi.funkin.koya.frontend;
 
-import macohi.objects.AnimateSprite;
+import macohi.overrides.MSprite;
 import flixel.FlxSprite;
 import flixel.FlxG;
 import macohi.funkin.koya.backend.AssetPaths;
 import animate.FlxAnimate;
 
-class FunkinSprite extends AnimateSprite
+class FunkinSprite extends MSprite
 {
 	public var cameraOffsets:Array<Float> = [0, 0];
 
