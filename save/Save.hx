@@ -13,9 +13,16 @@ class Save
 
 	public var version:SaveField<Null<Int>>;
 
+	public var saveTracePrefix(get, never):String;
+
+	function get_saveTracePrefix():String
+	{
+		return AnsiUtil.stripCodes('${AnsiCode.WHITE}${AnsiCode.BG_BRIGHT_BLUE} SAVE ${AnsiCode.RESET}');
+	}
+
 	function initFields()
 	{
-		trace(' SAVE '.bg_bright_blue() + ' | Initalizing Save fields');
+		trace(saveTracePrefix + ' | Initalizing Save fields');
 		version = new SaveField<Null<Int>>('version', SAVE_VERSION);
 	}
 
@@ -23,7 +30,7 @@ class Save
 
 	public function init(project:String, ?company:String)
 	{
-		trace(' SAVE '.bg_bright_blue() + ' | Initalizing Save');
+		trace(saveTracePrefix + ' | Initalizing Save');
 		FlxG.save.bind(project, company ?? Application.current.meta.get('company'));
 
 		initFields();
@@ -38,7 +45,7 @@ class Save
 				if (toobig.contains(field))
 					continue;
 
-				trace(' SAVE '.bg_bright_blue() + ' | Save.${field} : ${Reflect.field(FlxG.save.data, field)}');
+				trace(saveTracePrefix + ' | Save.${field} : ${Reflect.field(FlxG.save.data, field)}');
 			}
 		});
 
@@ -59,7 +66,7 @@ class Save
 		}
 		else
 		{
-			trace(' SAVE '.bg_bright_blue() + ' | Upgraded Save to $SAVE_VERSION');
+			trace(saveTracePrefix + ' | Upgraded Save to $SAVE_VERSION');
 			if (onComplete != null)
 				onComplete();
 		}

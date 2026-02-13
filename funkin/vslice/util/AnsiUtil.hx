@@ -629,8 +629,9 @@ class AnsiUtil
 		return codesSupported == true;
 	}
 
-	@:noCompletion
-	static function stripCodes(output:String):String
+	// why?
+	// @:noCompletion
+	public static function stripCodes(output:String):String
 	{
 		return isColorCodesSupported() ? output : REGEX_ANSI_CODES.replace(output, '');
 	}
