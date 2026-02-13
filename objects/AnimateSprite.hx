@@ -1,8 +1,6 @@
 package macohi.objects;
 
-import flixel.FlxSprite;
 import flixel.FlxG;
-import macohi.funkin.koya.backend.AssetPaths;
 import animate.FlxAnimate;
 
 class AnimateSprite extends FlxAnimate
