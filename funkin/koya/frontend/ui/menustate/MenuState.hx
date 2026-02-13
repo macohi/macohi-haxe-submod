@@ -115,7 +115,7 @@ class MenuState extends MusicBeatState
 	public function makeFlxText(item:String, i:Int)
 	{
 		var menuItem = new FlxText((menuType == Horizontal) ? -640 : 0, (menuType == Vertical) ? -640 : 0, 0, item);
-		menuItem.setFormat(AssetPaths.font('vcr.ttf'), 48, FlxColor.WHITE, LEFT, OUTLINE, FlxColor.BLACK);
+		menuItem.setFormat(AssetPaths.font(MegaVars.VCR_FONT, MegaVars.VCR_LIBRARY), 48, FlxColor.WHITE, LEFT, OUTLINE, FlxColor.BLACK);
 		menuItem.setBorderStyle(OUTLINE, FlxColor.BLACK, 4);
 
 		if (menuType == Horizontal)

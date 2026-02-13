@@ -57,7 +57,7 @@ class OptionsMenuState extends MenuState
 
 		valueText = new FlxText(valueBG.x, valueBG.y, valueBG.width, 'Lorem', 32);
 		add(valueText);
-		valueText.setFormat(AssetPaths.font('vcr.ttf'), 32, FlxColor.WHITE, FlxTextAlign.CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		valueText.setFormat(AssetPaths.font(MegaVars.VCR_FONT, MegaVars.VCR_LIBRARY), 32, FlxColor.WHITE, FlxTextAlign.CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		valueText.borderSize = 3;
 	}
 
@@ -100,8 +100,10 @@ class OptionsMenuState extends MenuState
 		FlxFlicker.flicker(pinkBG, (confirmMenu.length / 4) / 1000, .1);
 		if (!text)
 			FlxFlicker.flicker(itemsSpriteGroup.members[currentSelection], (confirmMenu.length / 4) / 500, .05);
-		if (text)
+		if (text && atlasText)
 			FlxFlicker.flicker(itemsAtlasTextGroup.members[currentSelection], (confirmMenu.length / 4) / 500, .05);
+		if (text && !atlasText)
+			FlxFlicker.flicker(itemsFlxTextGroup.members[currentSelection], (confirmMenu.length / 4) / 500, .05);
 
 		FlxTimer.wait((confirmMenu.length / 4) / 1000, function()
 		{
