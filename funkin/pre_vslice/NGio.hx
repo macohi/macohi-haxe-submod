@@ -27,6 +27,7 @@ class NGio
 
 	public static var scoreboardArray:Array<Score> = [];
 
+	public static var onLogin(default, null):FlxSignal = new FlxSignal();
 	public static var ngDataLoaded(default, null):FlxSignal = new FlxSignal();
 	public static var ngScoresLoaded(default, null):FlxSignal = new FlxSignal();
 
@@ -82,6 +83,7 @@ class NGio
 		{
 			trace('logged in! user:${NG.core.user.name}');
 			isLoggedIn = true;
+			onLogin.dispatch();
 
 			setSessionId();
 
