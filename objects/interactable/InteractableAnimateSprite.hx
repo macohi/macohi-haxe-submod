@@ -4,7 +4,7 @@ import flixel.FlxG;
 import flixel.FlxBasic;
 import flixel.util.FlxSignal;
 
-class InteractableMSprite extends AnimateSprite
+class InteractableAnimateSprite extends AnimateSprite
 {
 	public var onOverlap:FlxSignal = new FlxSignal();
 	public var overlaping:Bool = false;
