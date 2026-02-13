@@ -13,7 +13,7 @@ class MenuBG extends FunkinSprite
 		reloadBG(pink);
 	}
 
-	public function reloadBG(pink:Bool = false)
+	public dynamic function reloadBG(pink:Bool = false)
 	{
 		if (pink)
 			loadGraphic(AssetPaths.image('bg_pink', lib));
