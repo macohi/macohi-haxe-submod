@@ -63,3 +63,7 @@ Add this to your Project so the crash handler works
 <haxedef name="HXCPP_STACK_LINE" if="CRASH_HANDLER" />
 <haxedef name="HXCPP_STACK_TRACE" if="CRASH_HANDLER" />
 ```
+
+## Newgrounds
+
+Build your game with `-DENABLE_NEWGROUNDS` for newgrounds shit
