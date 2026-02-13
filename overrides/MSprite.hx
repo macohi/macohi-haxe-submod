@@ -7,7 +7,7 @@ import flixel.FlxG;
 import animate.FlxAnimate;
 
 /**
-	Ex-Override of `flixel.FlxSprite` to apply
+	Ex-Override of `animate.FlxAnimate` / `flixel.FlxSprite` to apply
 	custom functionality to it.
 **/
 class MSprite extends FlxAnimate
