@@ -159,46 +159,29 @@ class MenuState extends MusicBeatState
 			accepted(itemsSpriteGroup.members[currentSelection].item);
 	}
 
-	public var controls(get, never):Dynamic;
-
-	function get_controls():Dynamic
+	public function controlsGeneral()
 	{
-		return {
-			UI_UP_R: FlxG.keys.anyJustReleased([W, UP]),
-			UI_DOWN_R: FlxG.keys.anyJustReleased([S, DOWN]),
+		if (menuType == Vertical)
+			controlsMoveVertical();
 
-			UI_LEFT_R: FlxG.keys.anyJustReleased([A, LEFT]),
-			UI_RIGHT_R: FlxG.keys.anyJustReleased([D, RIGHT]),
+		if (menuType == Horizontal)
+			controlsMoveHorizontal();
 
-			ACCEPT: FlxG.keys.anyJustReleased([ENTER]),
-			BACK: FlxG.keys.anyJustReleased([ESCAPE])
-		}
+		controlsOther();
 	}
+
+	public function controlsMoveVertical() {}
+
+	public function controlsMoveHorizontal() {}
+
+	public function controlsOther() {}
 
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
 
-		if (menuType == Vertical)
-		{
-			if (subState == null && controls?.UI_UP_R)
-				select(-1);
-			if (subState == null && controls?.UI_DOWN_R)
-				select(1);
-		}
-
-		if (menuType == Horizontal)
-		{
-			if (subState == null && controls?.UI_LEFT_R)
-				select(-1);
-			if (subState == null && controls?.UI_RIGHT_R)
-				select(1);
-		}
-
-		if (subState == null && controls?.ACCEPT)
-			acceptFunction();
-		if (subState == null && controls?.BACK)
-			back();
+		if (subState == null)
+			controlsGeneral();
 
 		if (menuType == Vertical)
 		{
