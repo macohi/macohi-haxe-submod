@@ -22,5 +22,7 @@ class MenuBG extends FunkinSprite
 		}
 		else if (!MegaVars.KOYA_MENUBG_DESAT(lib).isBlank())
 			loadGraphic(MegaVars.KOYA_MENUBG_DESAT(lib));
+
+		visible = (graphic != null);
 	}
 }
