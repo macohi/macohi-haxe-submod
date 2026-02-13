@@ -1,10 +1,9 @@
-package macohi.funkin.koya.frontend.scenes.options;
+package macohi.funkin.koya.frontend.scenes.menustates.options;
 
 import macohi.funkin.pre_vslice.MusicBeatSubstate;
 import flixel.sound.FlxSound;
 import flixel.util.FlxTimer;
 import macohi.funkin.koya.backend.AssetPaths;
-import flixel.input.keyboard.FlxKey;
 import macohi.funkin.koya.frontend.ui.AtlasText;
 import flixel.tweens.FlxEase;
 import flixel.util.FlxColor;
@@ -81,8 +80,8 @@ class Prompt extends MusicBeatSubstate
 		fade(1.0, false);
 	}
 
-	var cancelMenu = new FlxSound().loadEmbedded(AssetPaths.sound('cancelMenu', 'ui'));
-	var confirmMenu = new FlxSound().loadEmbedded(AssetPaths.sound('confirmMenu', 'ui'));
+	var cancelMenu = new FlxSound().loadEmbedded(MegaVars.SOUND_MENU_BACK);
+	var confirmMenu = new FlxSound().loadEmbedded(MegaVars.SOUND_MENU_CONFIRM);
 
 	function fade(longer:Float = 0, ?confirm:Bool = false)
 	{

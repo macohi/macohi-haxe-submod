@@ -288,7 +288,7 @@ class MenuState extends MusicBeatState
 			}
 
 		if (change != 0)
-			FlxG.sound.play(AssetPaths.sound('scrollMenu', 'ui'));
+			FlxG.sound.play(MegaVars.SOUND_MENU_SCROLL);
 	}
 
 	public function accepted(item:String)
@@ -300,7 +300,7 @@ class MenuState extends MusicBeatState
 
 		transitioning = true;
 
-		var confirmMenu = new FlxSound().loadEmbedded(AssetPaths.sound('confirmMenu', 'ui'));
+		var confirmMenu = new FlxSound().loadEmbedded(MegaVars.SOUND_MENU_CONFIRM);
 		confirmMenu.play();
 
 		acceptedFlicker(confirmMenu, item);
