@@ -1,4 +1,4 @@
-# Do you really want this a global thing? Then disable this.
+: Do you really want this a global thing? Then disable this.
 haxelib newrepo
 
 haxelib install flixel
