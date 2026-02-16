@@ -2,7 +2,9 @@ package macohi.debugging;
 
 // crash handler stuff
 import haxe.Template;
-import lime.app.Application;
+using StringTools;
+using macohi.util.StringUtil;
+
 #if CRASH_HANDLER
 import haxe.CallStack;
 import haxe.io.Path;
@@ -12,8 +14,6 @@ import sys.FileSystem;
 import sys.io.File;
 #end
 
-using StringTools;
-using macohi.util.StringUtil;
 
 /**
 	This is to fix the annoying crashes with no
@@ -26,7 +26,7 @@ class CrashHandler
 
 	public static var FILE_PREFIX:String = 'Crash_';
 
-	public static var GITHUB_USER:String = 'sphis-sinco';
+	public static var GITHUB_USER:String = 'macohi';
 	public static var GITHUB_REPO:String = '';
 
 	public static function initalize(?new_file_location:String, ?new_file_prefix:String, ?new_github_user:String, ?new_github_repo:String)
