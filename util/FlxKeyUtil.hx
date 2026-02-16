@@ -36,7 +36,8 @@ class FlxKeyUtil
 	{
 		var keysArray:Array<FlxKey> = [];
 
-		if (keys.isBlankStrArray()) return [];
+		if (keys.isBlankStrArray())
+			return [];
 
 		for (key in keys)
 			if (!key.isBlankStr())
@@ -56,7 +57,8 @@ class FlxKeyUtil
 			if (!keyToString(key).isBlankStr())
 				stringArray.push(keyToString(key) + ',');
 
-		stringArray[stringArray.length - 1] = 'or ${stringArray[stringArray.length - 1].substr(0, stringArray[stringArray.length - 1].length - 1)}';
+		if (stringArray.length > 2)
+			stringArray[stringArray.length - 1] = 'or ${stringArray[stringArray.length - 1].substr(0, stringArray[stringArray.length - 1].length - 1)}';
 
 		return stringArray.join(' ');
 	}
