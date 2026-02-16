@@ -13,11 +13,17 @@ package macohi.util;
 @:noDebug
 abstract Navigation(Int)
 {
-	inline function new() {}
+	inline function new()
+		this = 0;
 
 	inline function scroll(amount:Int)
 	{
 		this += amount;
+	}
+
+	inline function setTo(amount:Int)
+	{
+		this = amount;
 	}
 
 	inline function reset()
@@ -33,18 +39,18 @@ abstract Navigation(Int)
 		}
 	}
 
-	inline function resetIfUnder(amount:Int, setTo:Int)
+	inline function resetIfUnder(setTo:Int)
 	{
-		if (this < amount)
+		if (this < 0)
 		{
 			this = setTo;
 		}
 	}
 
-	inline function resetIfBoth(over:Int, under:Int, setTo:Int)
+	inline function resetIfBoth(over:Int, setTo:Int)
 	{
 		resetIfOver(over);
-		resetIfUnder(under, setTo);
+		resetIfUnder(setTo);
 	}
 
 	inline function value()
