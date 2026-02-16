@@ -1,7 +1,7 @@
 package macohi.overrides;
 
 import animate.FlxAnimate;
-import flixel.FlxSprite;
+import flixel.FlxG;
 import flixel.system.FlxAssets.FlxGraphicAsset;
 import flixel.util.FlxColor;
 
