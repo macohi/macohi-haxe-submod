@@ -53,13 +53,19 @@ class FlxKeyUtil
 		if (invalidKeys(keys))
 			return '';
 
+		var i = 0;
 		for (key in keys)
+		{
 			if (!keyToString(key).isBlankStr())
-				stringArray.push(keyToString(key) + ',');
+				stringArray.push(keyToString(key) + ((i < keys.length - 1) ? ',' : ''));
+			i++;
+		}
 
 		if (stringArray.length > 2)
 			stringArray[stringArray.length - 1] = 'or ${stringArray[stringArray.length - 1].substr(0, stringArray[stringArray.length - 1].length - 1)}';
 
-		return stringArray.join(' ');
+		var ycps:String = stringArray.join(' ');
+
+		return ycps;
 	}
 }
