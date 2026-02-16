@@ -7,7 +7,7 @@ import flixel.util.FlxColor;
 
 class MSprite extends FlxAnimate
 {
-	public static var PIXEL_SCALE:Float = 2.0;
+	public static var PIXEL_SCALE:Float = 4.0;
 
 	public function applyPixelScale()
 	{
