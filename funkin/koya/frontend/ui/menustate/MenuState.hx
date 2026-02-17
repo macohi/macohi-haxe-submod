@@ -248,13 +248,8 @@ class MenuState extends MusicBeatState
 
 		currentSelection.resetIfBoth(itemList.length, itemList.length - 1, 0, 0);
 
-		var aSplitterItem = function()
-		{
+		if (itemList[currentSelection.value()].isBlankStr())
 			select(change);
-		}
-
-		if (itemList[currentSelection.value()] == '' || itemList[currentSelection.value()] == null)
-			aSplitterItem();
 
 		if (!text)
 			for (menuItem in itemsSpriteGroup.members)
@@ -296,7 +291,7 @@ class MenuState extends MusicBeatState
 
 	public function accepted(item:String)
 	{
-		if (item.trim() == '' || item == null)
+		if (item.isBlankStr())
 			return;
 
 		trace('selected: $item');
