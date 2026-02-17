@@ -11,6 +11,7 @@ import flixel.util.FlxTimer;
 import macohi.funkin.koya.backend.AssetPaths;
 import macohi.funkin.pre_vslice.Conductor;
 import macohi.funkin.pre_vslice.MusicBeatState;
+import macohi.util.Navigation;
 
 using StringTools;
 using macohi.util.StringUtil;
@@ -32,7 +33,7 @@ class MenuState extends MusicBeatState
 	public var itemsAtlasTextGroup:FlxTypedGroup<AtlasText>;
 	public var itemsFlxTextGroup:FlxTypedGroup<FlxText>;
 
-	public var currentSelection:Int = 0;
+	public var currentSelection:Navigation = new Navigation();
 
 	public var menuType:MenuType = Vertical;
 	public var menuItemPathPrefix:String = '';
@@ -155,12 +156,12 @@ class MenuState extends MusicBeatState
 	public function acceptFunction()
 	{
 		if (text && !atlasText)
-			accepted(itemsFlxTextGroup.members[currentSelection].text);
+			accepted(itemsFlxTextGroup.members[currentSelection.value()].text);
 		if (text && atlasText)
-			accepted(itemsAtlasTextGroup.members[currentSelection].text);
+			accepted(itemsAtlasTextGroup.members[currentSelection.value()].text);
 
 		if (!text)
-			accepted(itemsSpriteGroup.members[currentSelection].item);
+			accepted(itemsSpriteGroup.members[currentSelection.value()].item);
 	}
 
 	public function controlsAll()
@@ -190,12 +191,12 @@ class MenuState extends MusicBeatState
 		if (menuType == Vertical)
 		{
 			pinkBG.screenCenter(X);
-			pinkBG.y = FlxMath.lerp(pinkBG.y, (FlxG.height - pinkBG.height) / 2 - (currentSelection * 2), .1);
+			pinkBG.y = FlxMath.lerp(pinkBG.y, (FlxG.height - pinkBG.height) / 2 - (currentSelection.value() * 2), .1);
 		}
 		else
 		{
 			pinkBG.screenCenter(Y);
-			pinkBG.x = FlxMath.lerp(pinkBG.x, (FlxG.width - pinkBG.width) / 2 - (currentSelection * 2), .1);
+			pinkBG.x = FlxMath.lerp(pinkBG.x, (FlxG.width - pinkBG.width) / 2 - (currentSelection.value() * 2), .1);
 		}
 		flashBG.setPosition(pinkBG.x, pinkBG.y);
 
@@ -203,27 +204,27 @@ class MenuState extends MusicBeatState
 			for (menuItem in itemsSpriteGroup.members)
 			{
 				if (menuType == Horizontal)
-					menuItem.x = FlxMath.lerp(menuItem.x, itemStartingPos + (itemIncOffset * (menuItem.ID - currentSelection)), .1);
+					menuItem.x = FlxMath.lerp(menuItem.x, itemStartingPos + (itemIncOffset * (menuItem.ID - currentSelection.value())), .1);
 				if (menuType == Vertical)
-					menuItem.y = FlxMath.lerp(menuItem.y, itemStartingPos + (itemIncOffset * (menuItem.ID - currentSelection)), .1);
+					menuItem.y = FlxMath.lerp(menuItem.y, itemStartingPos + (itemIncOffset * (menuItem.ID - currentSelection.value())), .1);
 			}
 
 		if (text && atlasText)
 			for (menuItem in itemsAtlasTextGroup.members)
 			{
 				if (menuType == Horizontal)
-					menuItem.x = FlxMath.lerp(menuItem.x, itemStartingPos + (itemIncOffset * (menuItem.ID - currentSelection)), .1);
+					menuItem.x = FlxMath.lerp(menuItem.x, itemStartingPos + (itemIncOffset * (menuItem.ID - currentSelection.value())), .1);
 				if (menuType == Vertical)
-					menuItem.y = FlxMath.lerp(menuItem.y, itemStartingPos + (itemIncOffset * (menuItem.ID - currentSelection)), .1);
+					menuItem.y = FlxMath.lerp(menuItem.y, itemStartingPos + (itemIncOffset * (menuItem.ID - currentSelection.value())), .1);
 			}
 
 		if (text && !atlasText)
 			for (menuItem in itemsFlxTextGroup.members)
 			{
 				if (menuType == Horizontal)
-					menuItem.x = FlxMath.lerp(menuItem.x, itemStartingPos + (itemIncOffset * (menuItem.ID - currentSelection)), .1);
+					menuItem.x = FlxMath.lerp(menuItem.x, itemStartingPos + (itemIncOffset * (menuItem.ID - currentSelection.value())), .1);
 				if (menuType == Vertical)
-					menuItem.y = FlxMath.lerp(menuItem.y, itemStartingPos + (itemIncOffset * (menuItem.ID - currentSelection)), .1);
+					menuItem.y = FlxMath.lerp(menuItem.y, itemStartingPos + (itemIncOffset * (menuItem.ID - currentSelection.value())), .1);
 			}
 
 		// if ((FlxG.sound.music == null || !FlxG.sound.music.playing) && !transitioning)
@@ -243,19 +244,17 @@ class MenuState extends MusicBeatState
 
 	public function select(change:Int = 0)
 	{
-		currentSelection += change;
-
-		if (currentSelection < 0)
-			currentSelection = itemList.length - 1;
-		if (currentSelection >= itemList.length)
-			currentSelection = 0;
+		currentSelection.scroll(change);
+		
+		currentSelection.resetIfUnder(itemList.length - 1);
+		currentSelection.resetIfOver(0);
 
 		var aSplitterItem = function()
 		{
 			select(change);
 		}
 
-		if (itemList[currentSelection] == '' || itemList[currentSelection] == null)
+		if (itemList[currentSelection.value()] == '' || itemList[currentSelection.value()] == null)
 			aSplitterItem();
 
 		if (!text)
@@ -267,7 +266,7 @@ class MenuState extends MusicBeatState
 					menuItem.screenCenter(X);
 				menuItem.playAnim('idle');
 
-				if (menuItem.ID == currentSelection)
+				if (menuItem.ID == currentSelection.value())
 					menuItem.playAnim('selected');
 			}
 		if (text && atlasText)
@@ -278,7 +277,7 @@ class MenuState extends MusicBeatState
 				if (menuType == Vertical)
 					menuItem.screenCenter(X);
 
-				menuItem.alpha = (menuItem.ID == currentSelection) ? 1.0 : 0.6;
+				menuItem.alpha = (menuItem.ID == currentSelection.value()) ? 1.0 : 0.6;
 			}
 		if (text && !atlasText)
 			for (menuItem in itemsFlxTextGroup.members)
@@ -288,7 +287,7 @@ class MenuState extends MusicBeatState
 				if (menuType == Vertical)
 					menuItem.screenCenter(X);
 
-				menuItem.alpha = (menuItem.ID == currentSelection) ? 1.0 : 0.6;
+				menuItem.alpha = (menuItem.ID == currentSelection.value()) ? 1.0 : 0.6;
 			}
 
 		if (change != 0)
@@ -318,11 +317,11 @@ class MenuState extends MusicBeatState
 	{
 		FlxFlicker.flicker(pinkBG, (confirmMenu.length / 2) / 1000, .1);
 		if (!text)
-			FlxFlicker.flicker(itemsSpriteGroup.members[currentSelection], (confirmMenu.length / 2) / 500, .05);
+			FlxFlicker.flicker(itemsSpriteGroup.members[currentSelection.value()], (confirmMenu.length / 2) / 500, .05);
 		if (text && atlasText)
-			FlxFlicker.flicker(itemsAtlasTextGroup.members[currentSelection], (confirmMenu.length / 2) / 500, .05);
+			FlxFlicker.flicker(itemsAtlasTextGroup.members[currentSelection.value()], (confirmMenu.length / 2) / 500, .05);
 		if (text && !atlasText)
-			FlxFlicker.flicker(itemsFlxTextGroup.members[currentSelection], (confirmMenu.length / 2) / 500, .05);
+			FlxFlicker.flicker(itemsFlxTextGroup.members[currentSelection.value()], (confirmMenu.length / 2) / 500, .05);
 
 		FlxTimer.wait((confirmMenu.length / 2) / 1000, function()
 		{
