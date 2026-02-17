@@ -2,7 +2,6 @@ package macohi.util;
 
 import flixel.FlxBasic;
 import flixel.FlxG;
-import flixel.util.FlxTimer;
 import macohi.funkin.koya.backend.AssetPaths;
 
 class MusicManager extends FlxBasic
@@ -27,26 +26,16 @@ class MusicManager extends FlxBasic
 	// _% chance for it to play
 	public static var MUSIC_FREQUENCY:Float = 15.0;
 
-	public static var musicTimer:FlxTimer;
-
-	override public function new()
+	override function update(elapsed:Float)
 	{
-		super();
+		super.update(elapsed);
 
-		musicTimer = new FlxTimer().start(1 / 10, function(mt)
+		if (!FlxG.sound.music?.playing || FlxG.sound.music == null)
 		{
-			trace('Attempt at music made');
+			trace('Music Attempt');
 
-			if (!FlxG.sound.music?.playing || FlxG.sound.music == null)
-			{
-				if (FlxG.random.bool(MUSIC_FREQUENCY))
-					FlxG.sound.playMusic(getRandomTrackPath(), 0.6);
-				mt.time = FlxG.random.float(15, 60);
-			}
-			else
-				mt.time += FlxG.random.float(30, 90);
-		}, 0);
-
-		musicTimer.active = true;
+			if (FlxG.random.bool(MUSIC_FREQUENCY))
+				FlxG.sound.playMusic(getRandomTrackPath(), 1);
+		}
 	}
 }
