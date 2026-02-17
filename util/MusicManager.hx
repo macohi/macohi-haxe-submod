@@ -7,7 +7,7 @@ import macohi.funkin.koya.backend.AssetPaths;
 
 class MusicManager extends FlxBasic
 {
-	public static var tracks:Array<String> = ['dungeon drif'];
+	public static var tracks:Array<String> = [];
 
 	public static function getRandomTrackPath():String
 	{
