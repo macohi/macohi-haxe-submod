@@ -33,7 +33,7 @@ class MusicManager extends FlxBasic
 	{
 		super();
 
-		musicTimer = new FlxTimer().start(0, function(mt)
+		musicTimer = new FlxTimer().start(1 / 10, function(mt)
 		{
 			trace('Attempt at music made');
 
