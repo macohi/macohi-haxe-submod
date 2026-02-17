@@ -48,7 +48,7 @@ class AssetPaths
 
 		#if MOD_SUPPORT
 		var modReturn = getPathMod(path, library);
-		if (!modReturn.isBlank())
+		if (!modReturn.isBlankStr())
 			return modReturn;
 		#end
 

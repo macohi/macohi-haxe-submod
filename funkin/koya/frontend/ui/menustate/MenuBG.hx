@@ -17,10 +17,10 @@ class MenuBG extends FunkinSprite
 	{
 		if (pink)
 		{
-			if (!MegaVars.KOYA_MENUBG_PINK(lib).isBlank())
+			if (!MegaVars.KOYA_MENUBG_PINK(lib).isBlankStr())
 				loadGraphic(MegaVars.KOYA_MENUBG_PINK(lib));
 		}
-		else if (!MegaVars.KOYA_MENUBG_DESAT(lib).isBlank())
+		else if (!MegaVars.KOYA_MENUBG_DESAT(lib).isBlankStr())
 			loadGraphic(MegaVars.KOYA_MENUBG_DESAT(lib));
 
 		visible = (graphic != null);
