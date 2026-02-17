@@ -24,7 +24,7 @@ class MState extends FlxState
 		for (watermark in [leftWatermark, rightWatermark])
 		{
 			watermark.fieldWidth = FlxG.width - Math.abs(watermark.x);
-			watermark.setBorderStyle(OUTLINE, FlxColor.BLACK, 3);
+			watermark.setBorderStyle(OUTLINE, FlxColor.BLACK, 2);
 			watermark.visible = false;
 			add(watermark);
 		}
