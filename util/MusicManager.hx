@@ -38,7 +38,6 @@ class MusicManager extends FlxBasic
 
 		if (!FlxG.sound.music?.playing || FlxG.sound.music == null)
 		{
-
 			if (lastAttemptTime != null)
 				if (Date.now().getTime() - lastAttemptTime.getTime() < secondsUntilCanPlayMusicAgain.convert_s_to_ms())
 					return;
@@ -47,7 +46,14 @@ class MusicManager extends FlxBasic
 			lastAttemptTime = Date.now();
 
 			if (FlxG.random.bool(MUSIC_FREQUENCY))
-				FlxG.sound.playMusic(getRandomTrackPath(), 1);
+			{
+				var rtp = getRandomTrackPath();
+
+				if (rtp == null)
+					return;
+
+				FlxG.sound.playMusic(rtp, 1);
+			}
 		}
 	}
 }
