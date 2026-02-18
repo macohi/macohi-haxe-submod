@@ -42,8 +42,8 @@ class AssetTextList
 		this.filepath = filepath;
 		trace('Made AssetTextList($filepath)!');
 
-		FlxG.log.add(text);
-		FlxG.log.add(textList);
+		// FlxG.log.add(text);
+		// FlxG.log.add(textList);
 	}
 
 	public function has(entry:String):Bool
