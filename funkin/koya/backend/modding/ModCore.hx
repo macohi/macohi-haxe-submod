@@ -20,7 +20,7 @@ class ModCore
 
 	function get_enabledMods():Array<String>
 	{
-		return [];
+		return allMods;
 	}
 
 	public var modMetadatas:Map<String, ModMetadata> = [];

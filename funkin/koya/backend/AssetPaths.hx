@@ -24,7 +24,8 @@ class AssetPaths
 
 	public static function getPathMod(path:String, ?library:String):String
 	{
-		if (!tempDisableModCheck)
+		#if MOD_SUPPORT
+		if (!tempDisableModCheck && ModCore.instance != null)
 			for (mod in ModCore.instance.enabledMods)
 			{
 				var modPath:String = '${ModCore.instance.MOD_DIRECTORY}/$mod/$path';
@@ -33,6 +34,7 @@ class AssetPaths
 				if (KoyaAssets.exists(modPath))
 					return modPath;
 			}
+		#end
 
 		tempDisableModCheck = false;
 		return null;
@@ -62,6 +64,9 @@ class AssetPaths
 		var modPaths:Array<String> = [];
 
 		#if MOD_SUPPORT
+		if (ModCore.instance == null)
+			return [];
+
 		for (mod in ModCore.instance.enabledMods)
 		{
 			var modPath:String = '${ModCore.instance.MOD_DIRECTORY}/$mod/${path.replace('assets/', '')}';
