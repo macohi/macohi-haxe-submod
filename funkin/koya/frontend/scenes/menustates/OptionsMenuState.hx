@@ -1,12 +1,12 @@
 package macohi.funkin.koya.frontend.scenes.menustates;
 
-import flixel.util.FlxTimer;
+import flixel.FlxG;
 import flixel.effects.FlxFlicker;
 import flixel.sound.FlxSound;
-import macohi.funkin.koya.backend.AssetPaths;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
-import flixel.FlxG;
+import flixel.util.FlxTimer;
+import macohi.funkin.koya.backend.AssetPaths;
 import macohi.funkin.koya.frontend.ui.menustate.MenuState;
 
 using StringTools;
@@ -66,7 +66,7 @@ class OptionsMenuState extends MenuState
 	{
 		super.update(elapsed);
 
-		valueText.text = '${this.itemList[currentSelection]} : ${this.itemListValues.get(this.itemList[currentSelection])}';
+		valueText.text = '${this.itemList[currentSelection.value()]} : ${this.itemListValues.get(this.itemList[currentSelection.value()])}';
 		valueText.y = valueBG.getGraphicMidpoint().y - (valueText.height / 2);
 	}
 
@@ -98,13 +98,14 @@ class OptionsMenuState extends MenuState
 
 	override function acceptedFlicker(confirmMenu:FlxSound, item:String)
 	{
-		FlxFlicker.flicker(pinkBG, (confirmMenu.length / 4) / 1000, .1);
+		if (pinkBG.visible)
+			FlxFlicker.flicker(pinkBG, (confirmMenu.length / 4) / 1000, .1);
 		if (!text)
-			FlxFlicker.flicker(itemsSpriteGroup.members[currentSelection], (confirmMenu.length / 4) / 500, .05);
+			FlxFlicker.flicker(itemsSpriteGroup.members[currentSelection.value()], (confirmMenu.length / 4) / 500, .05);
 		if (text && atlasText)
-			FlxFlicker.flicker(itemsAtlasTextGroup.members[currentSelection], (confirmMenu.length / 4) / 500, .05);
+			FlxFlicker.flicker(itemsAtlasTextGroup.members[currentSelection.value()], (confirmMenu.length / 4) / 500, .05);
 		if (text && !atlasText)
-			FlxFlicker.flicker(itemsFlxTextGroup.members[currentSelection], (confirmMenu.length / 4) / 500, .05);
+			FlxFlicker.flicker(itemsFlxTextGroup.members[currentSelection.value()], (confirmMenu.length / 4) / 500, .05);
 
 		FlxTimer.wait((confirmMenu.length / 4) / 1000, function()
 		{
