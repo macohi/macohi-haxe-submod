@@ -19,4 +19,6 @@ class MegaVars
 	{
 		return AssetPaths.image('bg_desat', lib);
 	};
+
+	public static var KOYA_MENUITEM_LIBRARY:String = 'ui';
 }

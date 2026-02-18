@@ -11,7 +11,7 @@ class MenuItem extends FunkinSprite
 		super(x, y);
 
 		this.item = item;
-		frames = AssetPaths.fromSparrow('$pathPrefix$item', 'ui');
+		frames = AssetPaths.fromSparrow('$pathPrefix$item', MegaVars.KOYA_MENUITEM_LIBRARY);
 
 		addPrefixAnim('idle', '$item idle');
 		addPrefixAnim('selected', '$item selected');
