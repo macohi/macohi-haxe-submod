@@ -1,7 +1,9 @@
 package macohi.backend;
 
-import flixel.system.debug.log.LogStyle;
+#if html5
 import flixel.FlxG;
+import flixel.system.debug.log.LogStyle;
+#end
 
 class WeirdWebAssets
 {
