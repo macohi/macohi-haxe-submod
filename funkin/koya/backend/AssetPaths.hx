@@ -2,8 +2,8 @@ package macohi.funkin.koya.backend;
 
 import animate.FlxAnimateFrames;
 import flixel.graphics.frames.FlxAtlasFrames;
+import macohi.funkin.koya.backend.modding.ModCore;
 
-// import koya.backend.modding.ModCore;
 using StringTools;
 using haxe.io.Path;
 using macohi.util.StringUtil;
@@ -24,13 +24,15 @@ class AssetPaths
 
 	public static function getPathMod(path:String, ?library:String):String
 	{
-		// if (!tempDisableModCheck) for (mod in ModCore.enabledMods)
-		// {
-		// 	var modPath:String = '${ModCore.MOD_DIRECTORY}/$mod/$path';
+		if (!tempDisableModCheck)
+			for (mod in ModCore.instance.enabledMods)
+			{
+				var modPath:String = '${ModCore.instance.MOD_DIRECTORY}/$mod/$path';
 
-		// 	// First come first serve
-		// 	if (KoyaAssets.exists(modPath)) return modPath;
-		// }
+				// First come first serve
+				if (KoyaAssets.exists(modPath))
+					return modPath;
+			}
 
 		tempDisableModCheck = false;
 		return null;
@@ -59,15 +61,16 @@ class AssetPaths
 	{
 		var modPaths:Array<String> = [];
 
-		// #if MOD_SUPPORT
-		// for (mod in ModCore.enabledMods)
-		// {
-		// 	var modPath:String = '${ModCore.MOD_DIRECTORY}/$mod/${path.replace('assets/', '')}';
-		// 	trace(modPath);
+		#if MOD_SUPPORT
+		for (mod in ModCore.instance.enabledMods)
+		{
+			var modPath:String = '${ModCore.instance.MOD_DIRECTORY}/$mod/${path.replace('assets/', '')}';
+			trace(modPath);
 
-		// 	if (KoyaAssets.exists(modPath)) modPaths.push(modPath);
-		// }
-		// #end
+			if (KoyaAssets.exists(modPath))
+				modPaths.push(modPath);
+		}
+		#end
 
 		return modPaths;
 	}
