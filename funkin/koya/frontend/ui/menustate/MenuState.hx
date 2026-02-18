@@ -248,8 +248,9 @@ class MenuState extends MusicBeatState
 
 		currentSelection.resetIfBoth(itemList.length, itemList.length - 1, 0, 0);
 
-		if (itemList[currentSelection.value()].isBlankStr())
-			select(change);
+		if (change != 0)
+			if (itemList[currentSelection.value()].isBlankStr())
+				select(change);
 
 		if (!text)
 			for (menuItem in itemsSpriteGroup.members)
