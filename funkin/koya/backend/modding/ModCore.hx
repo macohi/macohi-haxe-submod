@@ -7,8 +7,10 @@ import macohi.util.WindowUtil;
 
 class ModCore
 {
+	public function new() {}
+
 	public static var instance:ModCore = null;
-	
+
 	public var MOD_MIN_API_VERSION:Float = 0.0;
 
 	public var MOD_DIRECTORY:String = 'mods';
