@@ -70,7 +70,7 @@ class AssetPaths
 		for (mod in ModCore.instance.enabledMods)
 		{
 			var modPath:String = '${ModCore.instance.MOD_DIRECTORY}/$mod/${path.replace('assets/', '')}';
-			trace(modPath);
+			// trace(modPath);
 
 			if (KoyaAssets.exists(modPath))
 				modPaths.push(modPath);
