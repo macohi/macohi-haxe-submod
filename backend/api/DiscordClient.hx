@@ -52,6 +52,10 @@ class DiscordClient
 		Discord.Initialize(CLIENT_ID, cpp.RawPointer.addressOf(handlers), false, "");
 
 		createDaemon();
+
+		setPresence({
+			state: 'Hello World'
+		});
 		#end
 	}
 
@@ -60,12 +64,12 @@ class DiscordClient
 	#if ENABLE_DISCORDRPC
 	var daemon:Null<Thread> = null;
 
-	function createDaemon():Void
+	static function createDaemon():Void
 	{
 		daemon = Thread.create(doDaemonWork);
 	}
 
-	public function setPresence(params:DiscordClientPresenceParams, ?postMakePresense:DiscordRichPresence->Void):Void
+	public static function setPresence(params:DiscordClientPresenceParams, ?postMakePresense:DiscordRichPresence->Void):Void
 	{
 		var presence:DiscordRichPresence = new DiscordRichPresence();
 
@@ -114,7 +118,7 @@ class DiscordClient
 		Discord.UpdatePresence(cpp.RawConstPointer.addressOf(presence));
 	}
 
-	function doDaemonWork():Void
+	static function doDaemonWork():Void
 	{
 		while (true)
 		{
@@ -127,7 +131,7 @@ class DiscordClient
 		}
 	}
 
-	public function shutdown():Void
+	public static function shutdown():Void
 	{
 		trace(' [DISCORD] Shutting down...');
 
@@ -163,7 +167,7 @@ class DiscordClient
 		trace(' [DISCORD] Client has received an error! ($errorCode) "${cast (message, String)}"');
 	}
 	#else
-	public function setPresence(params:DiscordClientPresenceParams, ?postMakePresense:Dynamic->Void):Void {}
+	public static function setPresence(params:DiscordClientPresenceParams, ?postMakePresense:Dynamic->Void):Void {}
 	#end
 }
 
