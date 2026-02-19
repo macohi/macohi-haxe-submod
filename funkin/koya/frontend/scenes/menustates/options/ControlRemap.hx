@@ -9,8 +9,11 @@ class ControlRemap extends OptionsMenuState
 {
 	public var altMod:Bool = false;
 
-	public function horizontalControls():Bool
+	public function altControls():Bool
 	{
+		
+		// valueText.text += '\n\n( Toggle alts via UI_LEFT or UI_RIGHT )';
+
 		return false;
 	}
 
@@ -18,7 +21,7 @@ class ControlRemap extends OptionsMenuState
 	{
 		super.update(elapsed);
 
-		if (subState == null && horizontalControls())
+		if (subState == null && altControls())
 		{
 			FlxG.sound.play(MegaVars.SOUND_MENU_SCROLL);
 
@@ -27,9 +30,8 @@ class ControlRemap extends OptionsMenuState
 			reloadItems();
 			reloadMenuItems();
 		}
-
-		// valueText.text += '\n\n( Toggle alts via UI_LEFT or UI_RIGHT )';
-		// valueText.y = valueBG.getGraphicMidpoint().y - (valueText.height / 2);
+		
+		valueText.y = valueBG.getGraphicMidpoint().y - (valueText.height / 2);
 	}
 
 	override function addItems()
