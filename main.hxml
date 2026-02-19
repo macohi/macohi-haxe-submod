@@ -5,3 +5,4 @@
 --library lime
 --library openfl
 --library newgrounds
+--library hxdiscord_rpc
