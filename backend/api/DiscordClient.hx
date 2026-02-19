@@ -182,7 +182,7 @@ typedef DiscordClientPresenceParams =
 	 * The second row of text below the game title.
 	 * Use `null` to display no text.
 	 */
-	var details:Null<String>;
+	var ?details:Null<String>;
 
 	/**
 	 * A large, 4-row high image to the left of the content.
