@@ -15,3 +15,5 @@ haxelib install openfl
 haxelib install lime
 
 haxelib install newgrounds
+
+haxelib install hxdiscord_rpc
