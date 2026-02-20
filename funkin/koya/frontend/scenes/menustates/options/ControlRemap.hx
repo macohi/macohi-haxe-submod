@@ -60,7 +60,7 @@ class ControlRemap extends OptionsMenuState
 					continue;
 			}
 
-			addItem(keybind.display ?? keybind.field, keybind.get(), function()
+			addItemBasedOnSaveField(keybind, function()
 			{
 				persistentUpdate = true;
 				openSubState(new KeybindPrompt(keybind.field, function(confirm:Bool)

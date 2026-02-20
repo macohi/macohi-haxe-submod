@@ -8,6 +8,7 @@ import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import macohi.funkin.koya.backend.AssetPaths;
 import macohi.funkin.koya.frontend.ui.menustate.MenuState;
+import macohi.save.SaveField;
 
 using StringTools;
 
@@ -17,6 +18,11 @@ class OptionsMenuState extends MenuState
 
 	public var itemListValues:Map<String, Dynamic> = [];
 	public var itemListFunctions:Map<String, Dynamic> = [];
+
+	public function addItemBasedOnSaveField(savefield:SaveField<Any>, method:Dynamic)
+	{
+		addItem(savefield.display ?? savefield.field, savefield.get(), method);
+	}
 
 	public function addItem(item:String, value:Dynamic, method:Dynamic)
 	{
