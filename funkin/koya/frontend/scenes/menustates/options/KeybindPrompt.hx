@@ -18,28 +18,31 @@ class KeybindPrompt extends Prompt
 
 	var keybindField:SaveField<Array<String>>;
 
+	var invalids:Array<String> = [];
+
 	override public function new(keybind:String, ?leaveMethod:Bool->Void)
 	{
 		super(leaveMethod);
 
 		this.keybind = keybind;
 
-		keybindField = Reflect.getProperty(getSave(), keybind);
+		keybindField = getKeybind(keybind, getSave());
+
+		if (keybindField == null || keybindField.get() == null)
+		{
+			prompt = 'Not allowing binding\n\nKeybind save field not found';
+			deny();
+		}
+
+		maxKeyNum = keybindField?.get()?.length ?? 0;
 	}
 
 	public static dynamic function getSave():Dynamic
 		return Save;
 
-	override function create()
+	public static dynamic function getKeybind(keybind:String, getSave:Void->Dynamic):SaveField<Array<String>>
 	{
-		super.create();
-
-		if (keybindField == null)
-		{
-			promptText.text = 'Not allowing binding\n\nKeybind save field not found';
-			deny();
-		}
-		maxKeyNum = keybindField.get().length;
+		return null;
 	}
 
 	public static dynamic function keybinds():Array<SaveField<Array<String>>>
@@ -47,40 +50,60 @@ class KeybindPrompt extends Prompt
 		return [];
 	}
 
+	public static dynamic function getBack():Bool
+	{
+		return false;
+	}
+
 	override function handleControls()
 	{
 		super.handleControls();
 
+		// your problem
+		// invalids = [];
+		// for (keybindList in keybinds())
+		// 	for (key in keybindList.get())
+		// 		if (FlxKey.fromString(key) != NONE)
+		// 			invalids.push(key);
+
+		FlxG.watch.addQuick('invalids', invalids);
+
 		if (pauseTick < 1)
-			this.prompt = 'Binding: ' + '“${this.keybind}”' + '\nKey number: $keyNum\n\nESCAPE TO CANCEL';
+			promptText.text = 'Binding: ' + '“${this.keybind}”' + '\nKey index: ${keyNum + 1}\n\nCurrent Binds: ${getKeybind(keybind, getSave()).get()}\n\nESCAPE TO CANCEL';
 		else
 			pauseTick--;
 
-		if (!FlxG.keys.justPressed.ESCAPE)
+		if (getBack())
+		{
+			deny();
 			return;
+		}
+
 		if (!FlxG.keys.justPressed.ANY)
 			return;
 		if (keyNum >= maxKeyNum)
 			accept();
 
-		var invalids:Array<FlxKey> = [ESCAPE];
+		var key:FlxKey = cast FlxG.keys.firstJustPressed();
 
-		for (keybindList in keybinds())
-			for (key in keybindList.get())
-				invalids.push(FlxKey.fromString(key));
+		if (key == NONE)
+		{
+			promptText.text = 'Not bound\n\nNONE?';
+			pauseTick = 100;
+			return;
+		}
 
-		var key:FlxKey = cast FlxG.keys.firstJustReleased();
-
-		if (invalids.contains(key))
+		if (invalids.contains(key.toString()))
 		{
 			promptText.text = 'Not bound\n\nKey already bound';
+			pauseTick = 100;
 			return;
 		}
 
 		var keyString = key.toString();
 
 		keybindField.get()[keyNum] = keyString;
-		promptText.text = 'Bound key #$keyNum to “$keyString”';
+		promptText.text = 'Bound key #${keyNum + 1} to “$keyString”';
 
 		keyNum++;
 		pauseTick = 400;
