@@ -84,6 +84,8 @@ class KeybindPrompt extends Prompt
 
 		if (getBack())
 		{
+			promptText.text = 'Bye :3';
+			pauseTick = 10000;
 			deny();
 			return;
 		}
