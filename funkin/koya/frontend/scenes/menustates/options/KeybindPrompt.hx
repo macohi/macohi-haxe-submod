@@ -25,13 +25,18 @@ class KeybindPrompt extends Prompt
 		this.keybind = keybind;
 
 		keybindField = Reflect.getProperty(Save, keybind);
+		maxKeyNum = keybindField.get().length;
+	}
+
+	override function create()
+	{
+		super.create();
+
 		if (keybindField == null)
 		{
-			trace('Not allowing binding\n\nKeybind save field not found');
+			promptText.text = 'Not allowing binding\n\nKeybind save field not found';
 			deny();
 		}
-
-		maxKeyNum = keybindField.get().length;
 	}
 
 	public static dynamic function keybinds():Array<SaveField<Array<String>>>
