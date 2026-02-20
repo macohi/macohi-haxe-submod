@@ -60,16 +60,18 @@ class KeybindPrompt extends Prompt
 		super.handleControls();
 
 		// your problem
-		// invalids = [];
-		// for (keybindList in keybinds())
-		// 	for (key in keybindList.get())
-		// 		if (FlxKey.fromString(key) != NONE)
-		// 			invalids.push(key);
+		invalids = [];
+		for (keybindList in keybinds())
+			for (key in keybindList.get())
+				if (FlxKey.fromString(key) != NONE)
+					invalids.push(key);
 
 		FlxG.watch.addQuick('invalids', invalids);
 
 		if (pauseTick < 1)
-			promptText.text = 'Binding: ' + '“${this.keybind}”' + '\nKey index: ${keyNum + 1}\n\nCurrent Binds: ${getKeybind(keybind, getSave()).get()}\n\nESCAPE TO CANCEL';
+			promptText.text = 'Binding: '
+				+ '“${this.keybind}”'
+				+ '\nKey index: ${keyNum + 1}\n\nCurrent Binds: ${getKeybind(keybind, getSave()).get()}\n\nESCAPE TO CANCEL';
 		else
 			pauseTick--;
 
@@ -97,6 +99,7 @@ class KeybindPrompt extends Prompt
 		{
 			promptText.text = 'Not bound\n\nKey already bound';
 			pauseTick = 100;
+			keyNum++;
 			return;
 		}
 
