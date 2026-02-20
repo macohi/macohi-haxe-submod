@@ -4,6 +4,7 @@ class SaveField<T>
 {
 	public var field:String = '';
 	public var display:String = null;
+	public var description:String = null;
 
 	public function new(field:String, ?initalValue:T = null, ?display:String = null)
 	{
