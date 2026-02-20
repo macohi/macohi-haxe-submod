@@ -34,7 +34,7 @@ class KeybindPrompt extends Prompt
 			deny();
 		}
 
-		maxKeyNum = keybindField?.get()?.length ?? 0;
+		maxKeyNum = keybindField?.get()?.length - 1 ?? 0;
 	}
 
 	public static dynamic function getSave():Dynamic
