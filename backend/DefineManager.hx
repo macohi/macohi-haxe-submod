@@ -15,7 +15,7 @@ class DefineManager
 		return getDefine(define) != null;
 
 	public static function doesDefineHaveValue(define:ExprOf<String>):Bool
-		return isDefineDefined() && getDefine(define) != '1';
+		return isDefineDefined(define) && getDefine(define) != '1';
 
 	public static function areAnyDefinesDefined(defines:Array<ExprOf<String>>):Bool
 	{
