@@ -21,7 +21,8 @@ class OptionsMenuState extends MenuState
 
 	public function addItemBasedOnSaveField(savefield:SaveField<Any>, method:Dynamic)
 	{
-		if (savefield == null) return;
+		if (savefield == null)
+			return;
 
 		addItem(savefield.display ?? savefield.field, (savefield.description ?? '') + savefield.get(), method);
 	}

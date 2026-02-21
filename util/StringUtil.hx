@@ -19,7 +19,7 @@ class StringUtil
 	{
 		return value == null || value.trim().length == 0;
 	}
-	
+
 	public static function isBlankStrArray(value:Array<String>):Bool
 	{
 		return value == null || value.length == 0;

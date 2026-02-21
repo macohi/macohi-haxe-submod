@@ -15,7 +15,8 @@ class MState extends FlxState
 	public var leftWatermark:MText = new MText(10, 10, FlxG.width, 'left watermark', 8);
 	public var rightWatermark:MText = new MText(-10, 10, FlxG.width, 'right watermark', 8);
 
-	override function create() {
+	override function create()
+	{
 		super.create();
 
 		leftWatermark.alignment = LEFT;

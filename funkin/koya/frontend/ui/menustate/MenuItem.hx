@@ -12,7 +12,7 @@ class MenuItem extends FunkinSprite
 		super(x, y);
 
 		this.item = item;
-		
+
 		if (KoyaAssets.exists(AssetPaths.xml('images/$pathPrefix$item', MegaVars.KOYA_MENUITEM_LIBRARY)))
 		{
 			frames = AssetPaths.fromSparrow('$pathPrefix$item', MegaVars.KOYA_MENUITEM_LIBRARY);

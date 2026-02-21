@@ -4,7 +4,6 @@ import json.JSONData;
 import json.patch.JSONPatch;
 
 // yoinked from polymod
-
 class JsonMergeAndAppend
 {
 	/**

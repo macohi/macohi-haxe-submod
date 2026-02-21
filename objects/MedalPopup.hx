@@ -38,6 +38,6 @@ class MedalPopup extends FlxBasic
 		super.draw();
 
 		// if (medal != null && medal.graphic != null && medal.alpha > 0)
-			// medal.draw();
+		// medal.draw();
 	}
 }

@@ -11,7 +11,6 @@ import macohi.funkin.pre_vslice.MusicBeatSubstate;
 
 using StringTools;
 
-
 class Prompt extends MusicBeatSubstate
 {
 	public var promptText:FlxText;

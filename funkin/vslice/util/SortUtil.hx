@@ -33,7 +33,6 @@ class SortUtil
 	// 		return 0;
 	// 	return FlxSort.byValues(order, a.zIndex, b.zIndex);
 	// }
-
 	// /**
 	//  * Given two Notes, returns 1 or -1 based on whether `a` or `b` has an earlier strumtime.
 	//  *
@@ -46,7 +45,6 @@ class SortUtil
 	// {
 	// 	return noteDataByTime(order, a.noteData, b.noteData);
 	// }
-
 	// /**
 	//  * Given two Note Data objects, returns 1 or -1 based on whether `a` or `b` has an earlier time.
 	//  *
@@ -59,7 +57,6 @@ class SortUtil
 	// {
 	// 	return FlxSort.byValues(order, a.time, b.time);
 	// }
-
 	// /**
 	//  * Given two Event Data objects, returns 1 or -1 based on whether `a` or `b` has an earlier time.
 	//  *

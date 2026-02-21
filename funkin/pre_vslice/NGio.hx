@@ -9,6 +9,7 @@ import openfl.display.Stage;
 
 using StringTools;
 using macohi.util.StringUtil;
+
 #if newgrounds
 import io.newgrounds.components.ScoreBoardComponent.Period;
 import io.newgrounds.objects.Medal;
