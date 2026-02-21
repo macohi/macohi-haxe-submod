@@ -188,6 +188,9 @@ class MenuState extends MusicBeatState
 		if (subState == null)
 			controlsAll();
 
+		for (obj in members)
+			obj.active = obj.visible && Reflect.field(obj, 'alpha') ?? 1 > 0;
+
 		if (menuType == Vertical)
 		{
 			pinkBG.screenCenter(X);

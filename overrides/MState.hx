@@ -30,4 +30,12 @@ class MState extends FlxState
 			add(watermark);
 		}
 	}
+
+	override function update(elapsed:Float)
+	{
+		super.update(elapsed);
+
+		for (obj in members)
+			obj.active = obj.visible && Reflect.field(obj, 'alpha') ?? 1 > 0;
+	}
 }
