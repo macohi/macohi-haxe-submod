@@ -33,8 +33,12 @@ These are required
 <haxelib name="flixel-addons" />
 <haxelib name="flixel-ui" />
 <haxelib name="flixel-animate" />
+
 <haxelib name="newgrounds" if="ENABLE_NEWGROUNDS"/>
 <haxelib name="discord_rpc" if="ENABLE_DISCORDRPC" />
+
+<haxelib name="jsonpath" />
+<haxelib name="jsonpatch" />
 ```
 
 # Other shit

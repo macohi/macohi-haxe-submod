@@ -17,3 +17,7 @@ haxelib install lime
 haxelib install newgrounds
 
 haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
+
+haxelib install thx.core
+haxelib install jsonpath
+haxelib install jsonpatch
