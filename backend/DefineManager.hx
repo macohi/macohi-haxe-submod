@@ -27,11 +27,11 @@ class DefineManager
 		return false;
 	}
 
-	public static function runIfDefineDefined(define:String, toRun:Dynamic->Void):Bool
+	public static function runIfDefineDefined(define:String, toRun:Dynamic->Void)
 		if (isDefineDefined(define) && toRun != null)
 			toRun(getDefine(define));
 
-	public static function runIfNotDefineDefined(define:String, toRun:Dynamic->Void):Bool
+	public static function runIfNotDefineDefined(define:String, toRun:Dynamic->Void)
 		if (!isDefineDefined(define) && toRun != null)
 			toRun(getDefine(define));
 
