@@ -6,6 +6,4 @@
 --library openfl
 --library newgrounds
 --library discord_rpc
---library thx.core
---library jsonpath
---library jsonpatch
+--library polymod
