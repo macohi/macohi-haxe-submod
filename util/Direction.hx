@@ -11,4 +11,10 @@ enum abstract Direction(Int) from Int to Int
 
 	public static function randomDirection():Direction
 		return FlxG.random.int(0, 3);
+
+	public static function forEachDirectional(f:Int->Void)
+		for (i in 0...4)
+		{
+			f(i);
+		}
 }
