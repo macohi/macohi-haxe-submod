@@ -84,7 +84,6 @@ class OptionsMenuState extends MenuState
 		super.accept(item);
 
 		runMethods(item);
-		trace(' * value: ${itemListValues.get(this.itemList[currentSelection.value()])}');
 	}
 
 	function runMethods(item:String)
