@@ -1,10 +1,10 @@
-package macohi.overrides;
+package macohi.allmine;
 
-import flixel.FlxG;
-import flixel.FlxSubState;
 import flixel.util.typeLimit.NextState;
+import flixel.FlxG;
+import flixel.FlxState;
 
-class MSubState extends FlxSubState
+class MState extends FlxState
 {
 	public function switchState(state:NextState)
 	{
