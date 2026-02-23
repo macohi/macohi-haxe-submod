@@ -8,7 +8,7 @@ Bunch o shit I'll prob use in multiple projects
 
 Go to source : `cd source`
 
-Add this : `git submodule add https://github.com/macohi/macohi-haxe-submod`
+Add this : `git submodule add https://github.com/macohi/macohi-haxe-submod macohi`
 
 Go back From Source : `cd ..`
 
