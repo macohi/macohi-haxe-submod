@@ -54,8 +54,9 @@ Do this
 
 and u'll get the assets in here
 
-## FlxBasic ni_ID
+## Macros
 
 ```xml
 <haxeflag name="--macro" value="addMetadata('@:build(macohi.ul.macros.FlxBasicStringID.buildFlxBasic())', 'flixel.FlxBasic')" />
+<haxeflag name="--macro" value="addMetadata('@:build(macohi.ul.macros.FlxBasicZIndex.buildFlxBasic())', 'flixel.FlxBasic')" />
 ```
