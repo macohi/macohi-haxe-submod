@@ -1,6 +1,6 @@
-# Macohi (Haxe thing)
+# Macohi (All Mine)
 
-Bunch o shit I'll prob use in multiple projects
+Theres more ive made here then stolen
 
 ## Command shit
 
@@ -49,7 +49,13 @@ If you're just editing this manually to add your own shit and it's not detecting
 Do this
 
 ```xml
-<assets path="source/macohi/assets" rename="assets"/>
+<assets path="source/macohi/allmine/assets" rename="assets"/>
 ```
 
 and u'll get the assets in here
+
+## FlxBasic ni_ID
+
+```xml
+<haxeflag name="--macro" value="addMetadata('@:build(macohi.ul.macros.FlxBasicStringID.buildFlxBasic())', 'flixel.FlxBasic')" />
+```
